@@ -1,1 +1,37 @@
+info:
+  component: XY Inc Locator
+  project:
+    name: xyinc-locator
 
+server:
+  port: 8080
+
+spring:
+  application:
+    name: xyinc-locator
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        jdbc:
+          lob:
+            non_contextual_creation: 1
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/xy_inc
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 2000
+      leak-detection-threshold: 6000
+      maximum-pool-size: 50
+      minimum-idle: 10
+      pool-name: XYIncRWPool
+      schema: xy_inc
+    embedded:
+      enabled: false
+
+  flyway:
+    enabled: true
