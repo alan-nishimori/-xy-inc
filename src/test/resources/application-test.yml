@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 2000
+      leak-detection-threshold: 6000
+      maximum-pool-size: 5
+      minimum-idle: 5
+      pool-name: XYIncRWPool
+      schema: xy_inc
+
+  flyway:
+    enabled: true
