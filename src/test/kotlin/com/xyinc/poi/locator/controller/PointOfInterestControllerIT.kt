@@ -109,7 +109,7 @@ class PointOfInterestControllerIT : BaseIT() {
     fun `ensure a point of interest will be correctly retrieved by name`() {
         val request = createRequest(
             method = HttpMethod.GET,
-            url = testUrl("${PointOfInterestController.PATH}?name=Pub")
+            url = testUrl("${PointOfInterestController.PATH}/name/Pub")
         ).build()
 
         val response = restTemplate.value.exchange(
@@ -130,7 +130,7 @@ class PointOfInterestControllerIT : BaseIT() {
     fun `ensure the correct points of interest will be retrieved when searching by point and max distance`() {
         val request = createRequest(
             method = HttpMethod.GET,
-            url = testUrl("${PointOfInterestController.PATH}?posX=20&posY=10&maxDistance=10")
+            url = testUrl("${PointOfInterestController.PATH}/near?posX=20&posY=10&maxDistance=10")
         ).build()
 
         val response = restTemplate.value.exchange(
@@ -151,7 +151,7 @@ class PointOfInterestControllerIT : BaseIT() {
     fun `ensure an empty list is retrieved when no point of interest is found by name`() {
         val request = createRequest(
             method = HttpMethod.GET,
-            url = testUrl("${PointOfInterestController.PATH}?name=testName")
+            url = testUrl("${PointOfInterestController.PATH}/name/testName")
         ).build()
 
         val response = restTemplate.value.exchange(
@@ -234,7 +234,7 @@ class PointOfInterestControllerIT : BaseIT() {
     fun `ensure a bad request is received when posX is negative when retrieving by point and max distance`() {
         val request = createRequest(
             method = HttpMethod.GET,
-            url = testUrl("${PointOfInterestController.PATH}?posX=-20&posY=10&maxDistance=10")
+            url = testUrl("${PointOfInterestController.PATH}/near?posX=-20&posY=10&maxDistance=10")
         ).build()
 
         val response = assertThrows<HttpClientErrorException.BadRequest> {
@@ -254,7 +254,7 @@ class PointOfInterestControllerIT : BaseIT() {
     fun `ensure a bad request is received when posY is negative when retrieving by point and max distance`() {
         val request = createRequest(
             method = HttpMethod.GET,
-            url = testUrl("${PointOfInterestController.PATH}?posX=20&posY=-10&maxDistance=10")
+            url = testUrl("${PointOfInterestController.PATH}/near?posX=20&posY=-10&maxDistance=10")
         ).build()
 
         val response = assertThrows<HttpClientErrorException.BadRequest> {

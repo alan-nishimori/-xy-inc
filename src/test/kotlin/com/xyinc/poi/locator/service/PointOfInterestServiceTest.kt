@@ -2,6 +2,7 @@ package com.xyinc.poi.locator.service
 
 import com.xyinc.poi.locator.fixture.PointOfInterestFixture
 import com.xyinc.poi.locator.repository.PointOfInterestRepository
+import com.xyinc.poi.locator.service.impl.PointOfInterestServiceImpl
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
@@ -17,7 +18,7 @@ class PointOfInterestServiceTest {
     private lateinit var poiRepository: PointOfInterestRepository
 
     @InjectMockKs
-    private lateinit var pointOfInterestService: PointOfInterestService
+    private lateinit var pointOfInterestService: PointOfInterestServiceImpl
 
     @Test
     fun `ensure that only positive posX is allowed when creating a point of interest`() {
