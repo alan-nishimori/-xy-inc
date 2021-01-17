@@ -30,8 +30,6 @@ spring:
       minimum-idle: 10
       pool-name: XYIncRWPool
       schema: xy_inc
-    embedded:
-      enabled: false
 
   flyway:
     enabled: true
