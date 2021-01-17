@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.net.URI
 
-private const val PATH = "/v1/points-of-interest"
-
 @RestController
 @RequestMapping(
-    value = [PATH],
+    value = [PointOfInterestController.PATH],
     consumes = [MediaType.APPLICATION_JSON_VALUE],
     produces = [MediaType.APPLICATION_JSON_VALUE]
 )
 class PointOfInterestController(
     private val poiService: PointOfInterestService
 ) {
+    companion object {
+        const val PATH = "/v1/points-of-interest"
+    }
+
     private val log = LoggerFactory.getLogger(javaClass)
 
     @PostMapping

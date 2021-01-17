@@ -33,6 +33,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
+    testImplementation("org.flywaydb.flyway-test-extensions:flyway-spring-test:7.0.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+    testImplementation("io.mockk:mockk:1.10.5")
 }
 
 dependencyManagement {
