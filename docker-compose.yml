@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  app:
+    container_name: xy-inc-backend
+    image: xy_inc-poi-locator
+    build: ./
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
+    links:
+      - postgresqldb
+    environment:
+      - DB_SERVER=postgresqldb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=xy_inc
+    networks:
+      - xy-inc-network
+
+  postgresqldb:
+    image: postgres:12-alpine
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=xy_inc
+    restart: unless-stopped
+    networks:
+      - xy-inc-network
+
+networks:
+  xy-inc-network:
