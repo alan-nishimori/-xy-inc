@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "b602aa33-2ad6-44e5-b554-1f25e72e8889",
+		"name": "XY Inc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Point of Interest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.unset(\"ID\");",
+							"pm.environment.unset(\"NAME\");",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"ID\", jsonData.id);",
+							"pm.environment.set(\"NAME\", jsonData.name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomFirstName}}\",\n    \"posX\": {{$randomInt}},\n    \"posY\": {{$randomInt}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/v1/points-of-interest",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"v1",
+						"points-of-interest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Point of Interest By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/v1/points-of-interest/{{ID}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"v1",
+						"points-of-interest",
+						"{{ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Points of Interest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/v1/points-of-interest",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"v1",
+						"points-of-interest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Point of Interest By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/v1/points-of-interest/name/{{NAME}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"v1",
+						"points-of-interest",
+						"name",
+						"{{NAME}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Point of Interest within location and distance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/v1/points-of-interest/near?posX=20&posY=10&maxDistance=10",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"v1",
+						"points-of-interest",
+						"near"
+					],
+					"query": [
+						{
+							"key": "posX",
+							"value": "20"
+						},
+						{
+							"key": "posY",
+							"value": "10"
+						},
+						{
+							"key": "maxDistance",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
